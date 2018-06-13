@@ -44,7 +44,6 @@ frame isLoading user page content =
     div [ class "page-frame" ]
         [ viewHeader page user isLoading
         , content
-        , viewFooter
         ]
 
 
@@ -84,20 +83,6 @@ viewSignIn page user =
                 ]
             , linkTo Route.Logout [ text "Sign out" ]
             ]
-
-
-viewFooter : Html msg
-viewFooter =
-    footer []
-        [ div [ class "container" ]
-            [ a [ class "logo-font", href "/" ] [ text "conduit" ]
-            , span [ class "attribution" ]
-                [ text "An interactive learning project from "
-                , a [ href "https://thinkster.io" ] [ text "Thinkster" ]
-                , text ". Code & design licensed under MIT."
-                ]
-            ]
-        ]
 
 
 navbarLink : ActivePage -> Route -> List (Html msg) -> Html msg
