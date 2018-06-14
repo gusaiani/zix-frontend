@@ -25,7 +25,6 @@ type ActivePage
     | Home
     | Login
     | Register
-    | Settings
     | Profile Username
     | NewArticle
 
@@ -74,15 +73,7 @@ viewSignIn page user =
             ]
 
         Just user ->
-            [ linkTo Route.NewArticle [ i [ class "ion-compose" ] [], text " New Post" ]
-            , linkTo Route.Settings [ i [ class "ion-gear-a" ] [], text " Settings" ]
-            , linkTo
-                (Route.Profile user.username)
-                [ img [ class "user-pic", UserPhoto.src user.image ] []
-                , User.usernameToHtml user.username
-                ]
-            , linkTo Route.Logout [ text "Sign out" ]
-            ]
+            [  linkTo Route.Logout [ text "Sign out" ]]
 
 
 navbarLink : ActivePage -> Route -> List (Html msg) -> Html msg
@@ -101,15 +92,6 @@ isActive page route =
             True
 
         ( Register, Route.Register ) ->
-            True
-
-        ( Settings, Route.Settings ) ->
-            True
-
-        ( Profile pageUsername, Route.Profile routeUsername ) ->
-            pageUsername == routeUsername
-
-        ( NewArticle, Route.NewArticle ) ->
             True
 
         _ ->

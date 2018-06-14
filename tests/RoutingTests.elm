@@ -18,7 +18,6 @@ fromLocation =
         [ testLocation "" Root
         , testLocation "#login" Login
         , testLocation "#logout" Logout
-        , testLocation "#settings" Settings
         , testLocation "#profile/foo" (Profile (usernameFromStr "foo"))
         , testLocation "#register" Register
         , testLocation "#article/foo" (Article (slugFromStr "foo"))
