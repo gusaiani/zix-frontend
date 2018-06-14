@@ -22,9 +22,7 @@ import Views.Page as Page
 
 
 type alias Model =
-    { tags : List Tag
-    , feed : Feed.Model
-    }
+    { feed : Feed.Model }
 
 
 init : Session -> Task PageLoadError Model
@@ -36,17 +34,13 @@ init session =
             else
                 SelectList.fromLists [] yourFeed [ globalFeed ]
 
-        loadTags =
-            Request.Article.tags
-                |> Http.toTask
-
         loadSources =
             Feed.init session feedSources
 
         handleLoadError _ =
             pageLoadError Page.Home "Homepage is currently unavailable."
     in
-    Task.map2 Model loadTags loadSources
+    Task.map Model loadSources
         |> Task.mapError handleLoadError
 
 
