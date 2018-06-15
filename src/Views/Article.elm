@@ -31,7 +31,7 @@ view toggleFavorite article =
     in
     div [ class "article-preview" ]
         [ div [ class "article-meta" ]
-            [ a [ Route.href (Route.Profile author.username) ]
+            [ div []
                 [ img [ UserPhoto.src author.image ] [] ]
             , div [ class "info" ]
                 [ Views.Author.view author.username
@@ -42,11 +42,6 @@ view toggleFavorite article =
                 article
                 [ class "pull-xs-right" ]
                 [ text (" " ++ toString article.favoritesCount) ]
-            ]
-        , a [ class "preview-link", Route.href (Route.Article article.slug) ]
-            [ h1 [] [ text article.title ]
-            , p [] [ text article.description ]
-            , span [] [ text "Read more..." ]
             ]
         ]
 
